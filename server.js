@@ -4,7 +4,7 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackhotMiddleware from 'webpack-hot-middleware';
 import config from './webpack.config';
 
-const bundler = weback(config);
+const bundler = webpack(config);
 
 // Listens and serves application from src folder
 browserSync({
@@ -20,7 +20,7 @@ browserSync({
 				quiet: false,
 				stats: {
 					assets: false,
-					colors: ture,
+					colors: true,
 					version: false,
 					hash: false,
 					timings: false,

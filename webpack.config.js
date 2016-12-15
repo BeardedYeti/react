@@ -11,7 +11,7 @@ export default {
 		path.resolve(__dirname, 'src/index.js') // Entry
 	],
 	output: {
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve(__dirname, 'dist'), //output
 		filename: '[name].js'
 	},
 	plugins: [
@@ -24,9 +24,11 @@ export default {
 		})
 	],
 	module: {
-		loaders: [ // Helps load/import multiple types of files into broser useable formats
+		loaders: [ // Helps load/import multiple types of files into browser useable formats
 			{
-				test: /\.jsx?$/, exclue: /node_modules/, loaders: ['babel']
+				test: /\.jsx?$/, 
+				exclude: /(node_modules|bower_components)/, 
+				loaders: ['babel']
 			},
 			{
 				test: /\.css$/, loaders: ['style', 'css?sourceMap']
