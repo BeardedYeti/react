@@ -1,38 +1,24 @@
-import webpack from 'webpack';
-import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+const path = require('path');
+const webpack = require('webpack');
 
-export default {
-	resolve: {
-		extensions: ['', '.js', '.jsx', '.json']
-	},
-	devtool: 'eval-source-map',
-	entry: [
-		path.resolve(__dirname, 'src/index.js') // Entry
-	],
+module.exports = {
+	entry: 'src/index.js', // Entry
 	output: {
-		path: path.resolve(__dirname, 'dist'), //output
-		filename: '[name].js'
+		path: __dirname, //output
+		filename: 'bundle.js',
+		publicPath: '/src/assets/'
 	},
-	plugins: [
-		new HtmlWebpackPlugin({ // Creates root html file
-			minify: {
-				removeComments: true,
-				collapseWhitespace: true
-			},
-			inject: true
-		})
-	],
 	module: {
 		loaders: [ // Helps load/import multiple types of files into browser useable formats
 			{
 				test: /\.jsx?$/, 
-				exclude: /(node_modules|bower_components)/, 
-				loaders: ['babel']
+				loaders: 'babel-loader',
+				include: path.join(__dirname, 'src'),
+				exclude: /(node_modules|bower_components)/
 			},
 			{
 				test: /\.css$/, loaders: ['style', 'css?sourceMap']
 			}
 		]
-	}
-}
+	},
+};

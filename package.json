@@ -4,6 +4,11 @@
   "engines": {
     "node": "6.2.0"
   },
+  "scripts": {
+    "start": "npm build && node dist/app.js",
+    "dev-start": "node dist/app.js",
+    "build": "webpack --config ./webpack.deployment.config.js --progress --colors"
+  },
   "description": "Boilerplate for React Babel Webpack",
   "author": "Colin Smith",
   "license": "GNC",
@@ -13,7 +18,8 @@
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "redux": "^3.6.0",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "webpack-dev-server": "^1.16.2"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
@@ -28,9 +34,5 @@
     "webpack": "^1.14.0",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.2"
-  },
-  "scripts": {
-    "start": "babel-node server.js",
-    "build": "babel-node build.js"
   }
 }
