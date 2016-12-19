@@ -1,34 +1,16 @@
-import browserSync from 'browser-sync';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackhotMiddleware from 'webpack-hot-middleware';
-import config from './webpack.config';
+const path = require('path')
+const express = require('require')
 
-const bundler = webpack(config);
+module.exports = {
+	app: function () {
+		const app = express();
+		const indexPath = path.join(__dirname, 'indexDep.html');
+		const publicPath = express.static(path.join(__dirname, '../dist'));
 
-// Listens and serves application from src folder
-browserSync({
-	port: 3000,
-	ui: {
-		port: 3001
-	},
-	server: {
-		baseDir: 'src',
-		middleware: [
-			webpackDevMiddleware(bundler, {
-				noInfo: false,
-				quiet: false,
-				stats: {
-					assets: false,
-					colors: true,
-					version: false,
-					hash: false,
-					timings: false,
-					chunks: false,
-					chuckModules: false
-				}
-			}),
-			webpackhotMiddleware(bundler)
-		]
-	},
-})
+		app.use('/dist', publicPath);
+		app.get('/', function (_, res) {
+			 res.sendFile(indexPath)
+		});
+		return app;
+	}
+}
