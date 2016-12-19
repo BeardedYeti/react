@@ -1,30 +1,13 @@
-const path = require('path');
 const webpack = require('webpack');
+const webpackDevServer = require('webpack-dev-server');
+const webpackConfig = require('./webpack.config');
+const path = require('path');
+const env = { dev: process.env.NODE_ENV };
 
-module.exports = {
-	devtool: 'source-map',
-	entry: [
-		'./src/index.js'
-	],
-	output: {
-		path: path.join(__dirname, 'dist'),
-		filename: 'bundle.js',
-		publicPath: '/dist/'
-	},
-	plugins: [
-		new webpack.optimize.UglifyJsPlugin({
-			minimize: true,
-			compress: {
-				warnings: false
-			}
-		})
-	],
-	module: {
-		loaders: [(
-				test: /.jsx?$/,
-				loader: 'babel-loader',
-				include: path.join(__dirname, 'app'),
-				exclude: /node_modules/,
-		)]
-	},
+const serverConfig = {
+	contentBase: path.join(__dirname, '../../src/'),
+	historyApiFallback: { disableDotRule: true },
 };
+
+const server = new webpackDevServer(webpack(webpackConfig(env)), serverConfig);
+server.listen(3000, 'localhost');
