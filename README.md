@@ -13,11 +13,13 @@ A boilerplate for personal SPA applications:
  - Yarn
 
 # Commands
- To Install
+To Install
  - yarn install
 
- For Development
+
+For Development
  - npm start
 
- For Production
+
+For Production
  - npm build
