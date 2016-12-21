@@ -1,13 +1,41 @@
-const webpack = require('webpack');
-const webpackDevServer = require('webpack-dev-server');
-const webpackConfig = require('./webpack.config');
-const path = require('path');
-const env = { dev: process.env.NODE_ENV };
+/* Development Config */
 
-const serverConfig = {
-	contentBase: path.join(__dirname, '../../src/'),
-	historyApiFallback: { disableDotRule: true },
+import webpack from 'webpack';
+import htmlWebpackPlugin from 'html-webpack-plugin';
+import { APP_PATH } from './webpack.paths.config';
+
+const DEV_CONFIG = {
+	module: {
+		rules: [
+			{
+				test: /\.(js|jsx)$/,
+				include: APP_PATH,
+				use: [
+					'react-hot-loader'
+				]
+			}
+		]
+	},
+	devServer: {
+		hot: true,
+		port: 8080,
+		inline: true,
+		host: '0.0.0.0',
+		historyApiFallback: true,
+		stats: {
+			assets: true,
+			timings: true,
+			chunks: false,
+			children: false
+		}
+	},
+	plugins: [
+		new webpack.HotModuleReplacementPlugin(),
+		new htmlWebpackPlugin({
+			title: 'React Application',
+			template: 'index.ejs'
+		})
+	]
 };
 
-const server = new webpackDevServer(webpack(webpackConfig(env)), serverConfig);
-server.listen(3000, 'localhost');
+export default DEV_CONFIG;

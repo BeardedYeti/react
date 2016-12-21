@@ -1,30 +1,24 @@
-const path = require('path');
-const webpack = require('webpack');
+/* Production Config */
 
-module.exports = {
-	devtool: 'source-map',
-	entry: [
-		'./src/index.js'
-	],
-	output: {
-		path: path.join(__dirname, 'dist'),
-		filename: 'bundle.js',
-		publicPath: '/dist/'
-	},
+import webpack from 'webpack';
+
+const PROD_CONFIG = {
 	plugins: [
-		new webpack.optimize.UglifyJsPlugin({
+		new webpack.LoaderOptionsPlugin({
 			minimize: true,
+			debug: false
+		}),
+		new webpack.optimize.UglifyJsPlugin({
 			compress: {
+				screw_ie8: true,
 				warnings: false
+			},
+			output: {
+				comments: false,
+				screw_ie8: true
 			}
 		})
-	],
-	module: {
-		loaders: [(
-				test: /.jsx?$/,
-				loader: 'babel-loader',
-				include: path.join(__dirname, 'app'),
-				exclude: /node_modules/,
-		)]
-	},
+	]
 };
+
+export default PROD_CONFIG
