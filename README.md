@@ -9,11 +9,15 @@ A boilerplate for personal SPA applications:
  - Code Splitting
  - Eslint
  - React Router (Not setup yet)
+ - Express (Not setup yet)
+ - Yarn
 
 # Commands
- 
+ To Install
+ - yarn install
+
  For Development
  - npm start
- 
+
  For Production
  - npm build

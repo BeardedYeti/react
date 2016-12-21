@@ -78,4 +78,4 @@ jspm_packages
 .yarn-integrity
 
 # Dist Folder
-dist/*
+dist
