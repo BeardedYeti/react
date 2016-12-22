@@ -29,22 +29,26 @@ const config = {
 
 const COMMON_CONFIG = {
   entry: {
-  	app: [
-  		APP_PATH,
-  	],
-  	vendor: [
-  		'react',
-  		'react-dom',
-  		'react-addons-shallow-compare',
-  		'redux',
-  		'react-redux',
-  		'redux-thunk',
-  		'react-router'
-  	]
+    app: [
+    	'react-hot-loader/patch',
+      'webpack-dev-server/client?http://localhost:8080',
+      'webpack/hot/only-dev-server',
+      APP_PATH,
+    ],
+    vendor: [
+    	'react',
+    	'react-dom',
+    	'react-addons-shallow-compare',
+    	'redux',
+    	'react-redux',
+    	'redux-thunk',
+    	'react-router'
+    ]
   },
   output: {
    path: DIST_PATH,
-   filename: '[name].bundle.js'
+   filename: '[name].bundle.js',
+   publicPath: '/'
   },
   module: {
   	rules: [

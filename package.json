@@ -6,7 +6,8 @@
   },
   "scripts": {
     "start": "env NODE_ENV=development webpack-dev-server --config ./webpack.config.babel.js --progress --colors",
-    "build": "env NODE_ENV=production webpack --config ./webpack.config.babel.js --colors"
+    "build": "env NODE_ENV=production webpack --config ./webpack.config.babel.js --colors",
+    "test": "mocha"
   },
   "description": "Boilerplate for React Babel Webpack",
   "author": "Colin Smith",
@@ -58,7 +59,7 @@
     "node-sass": "^4.1.0",
     "postcss-loader": "^1.2.1",
     "prepush": "^3.1.11",
-    "react-hot-loader": "^1.3.1",
+    "react-hot-loader": "3.0.0-beta.6",
     "redux-devtools": "^3.3.1",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.1.1",
