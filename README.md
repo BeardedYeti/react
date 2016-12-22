@@ -1,4 +1,4 @@
-### React Redux Webpack2 Hot Reloader
+# React Redux Webpack2 Hot Reloader
 
 A boilerplate for personal SPA applications:
 
