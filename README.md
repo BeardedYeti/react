@@ -22,4 +22,4 @@ For Development
 
 
 For Production
- - npm build
+ - npm run build
